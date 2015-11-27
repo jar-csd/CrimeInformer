@@ -1,5 +1,8 @@
 package csd.jar.crimeinformer;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,10 +48,43 @@ public class RegisterActivity extends AppCompatActivity {
 
         } else {
             //No Space
+            confirmDialog();
 
         }
 
     } // clickOK
+
+    private void confirmDialog() {
+        AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
+        objBuilder.setIcon(R.drawable.icon_question);
+        objBuilder.setTitle("กรุณาตรวจสอบข้อมูล");
+        objBuilder.setMessage("ชื่อ = " +nameString + "\n"+
+        "นามสกุล = "+ surnameString +"\n" +
+        "หมายเลขบัตรประชาชน = " + idCardString + "\n" +
+        "เบอร์โทรศัพท์ = "+ phoneString +"\n" +
+        "E_mail= "+ emailString);
+        objBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        objBuilder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateValueToServer();
+                dialogInterface.dismiss();
+                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+            }
+        });
+        objBuilder.show();
+
+
+    } //ConfirmDialog
+
+    private void updateValueToServer() {
+
+    }
 
     public void clickCancel(View view) {
 
