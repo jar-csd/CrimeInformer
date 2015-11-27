@@ -9,6 +9,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     //Explicit
     private EditText nameEditText, surnameEditText, idCardEditText, phoneEditText, emailEditText;
+    private String nameString, surnameString,idCardString, phoneString, emailString;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +26,29 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void clickOK(View view) {
 
+     //Get Value to String
+        nameString = nameEditText.getText().toString().trim();
+        surnameString = surnameEditText.getText().toString().trim();
+        idCardString = idCardEditText.getText().toString().trim();
+        phoneString = phoneEditText.getText().toString().trim();
+        emailString = emailEditText.getText().toString().trim();
 
-    }
+
+        //Check Zero
+        if (nameString.equals("") || surnameString.equals("") ||
+                idCardString.equals("") || phoneString.equals("") ||
+                emailString.equals("")) {
+
+            //Have Space
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            objMyAlertDialog.nagativeDialog(RegisterActivity.this, "มีช่องว่าง", "กรุณากรอกให้ครบทุกช่องครับ");
+
+        } else {
+            //No Space
+
+        }
+
+    } // clickOK
 
     public void clickCancel(View view) {
 
