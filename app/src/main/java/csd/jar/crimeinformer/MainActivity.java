@@ -19,6 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickRegister(View view) {
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-    }
+    }   // clickRegister
 
 }   //Main  Class
