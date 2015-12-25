@@ -1,5 +1,6 @@
 package csd.jar.crimeinformer;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ public class LoginActivity extends AppCompatActivity {
     //Explicit
     private EditText userEditText, passwordEditText;
     private String userString, passwordString;
+    private ManageTABLE objManageTABLE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,9 @@ public class LoginActivity extends AppCompatActivity {
 
         //Bind Widget
         bindWidget();
+
+        //Connected Database
+        objManageTABLE = new ManageTABLE(this);
     } // Main Method
 
     public void clickLogin(View view) {
@@ -34,9 +39,29 @@ public class LoginActivity extends AppCompatActivity {
 
         } else {
 
+            //No Space
+
+            //objManageTABLE.addNewValue("User", "Pass", "Name", "Surname", "idCard", "phoneNumber", "Email");
+
+            deleteAllSQLite();
+
+            synChronizedJSON();
+
+
         }
 
     }// ClickLogin
+
+    private void deleteAllSQLite() {
+        SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
+                MODE_PRIVATE, null);
+        objSqLiteDatabase.delete(ManageTABLE.TABLE_NAME, null, null);
+    }
+
+    private void synChronizedJSON() {
+
+
+    }//SynChoronizedJSON
 
     private void bindWidget() {
         userEditText = (EditText) findViewById(R.id.editText6);
