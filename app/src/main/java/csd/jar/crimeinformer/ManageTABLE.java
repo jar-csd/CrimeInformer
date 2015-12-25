@@ -2,6 +2,7 @@ package csd.jar.crimeinformer;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -32,6 +33,38 @@ public class ManageTABLE {
         readSqLiteDatabase = objMyOpenHelper.getReadableDatabase();
 
     }//Constructor
+
+    public String[] searchUser(String strUer) {
+        try {
+
+            String[] strResult = null;
+            Cursor objCursor = readSqLiteDatabase.query(TABLE_NAME,
+                    new String[]{COLUMN_ID, COLUMN_USER, COLUMN_PASSWORD, COLUMN_NAME,
+                    COLUMN_SURNAME, COLUMN_ID_CARD, COLUMN_PHONENUMBER, COLUMN_EMAIL},
+                    COLUMN_USER + "=?",
+                    new String[]{String.valueOf(strUer)},
+                    null, null, null, null);
+
+            if (objCursor !=null) {
+                if (objCursor.moveToFirst()) {
+
+                    strResult = new String[objCursor.getColumnCount()];
+                    for (int i=0;i<objCursor.getColumnCount();i++) {
+                        strResult[i] = objCursor.getString(i);
+
+                    } //for
+
+                }//if2
+            }//if1
+            objCursor.close();
+            return strResult;
+
+        } catch (Exception e) {
+            return null;
+        }
+
+        //return new String[0];
+    }
 
     public long addNewValue(String strUser,
                             String strPassword,
