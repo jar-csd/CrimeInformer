@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickLogin(View view) {
 
+        startActivity(new Intent(MainActivity.this,LoginActivity.class));
+
     }
 
     public void clickRegister(View view) {
