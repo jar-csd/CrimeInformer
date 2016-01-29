@@ -1,5 +1,8 @@
 package csd.jar.crimeinformer;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -72,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 
             String[] strMyResult = objManageTABLE.searchUser(userString);
             if (passwordString.equals(strMyResult[2])) {
-                welcomeDialog();
+                welcomeDialog(strMyResult[0], strMyResult[3], strMyResult[4]);
 
             } else {
 
@@ -91,10 +94,24 @@ public class LoginActivity extends AppCompatActivity {
 
     } //checkUser
 
-    private void welcomeDialog() {
+    private void welcomeDialog(final String strID, String strName, String strSurname) {
+        AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
+        objBuilder.setIcon(R.drawable.icon_question);
+        objBuilder.setTitle("ยินดีต้อนรับ");
+        objBuilder.setMessage("ยินดีต้อนรับ คุณ"+strName +" " + strSurname + " เข้าสู่ระบบแจ้งข่าวอาชญากรรม");
+        objBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent objIntent = new Intent(LoginActivity.this, ServiceActivity.class);
+                objIntent.putExtra("ID", strID);
+                startActivity(objIntent);
+                finish();
+            }
+        });
+        objBuilder.show();
 
 
-    }
+    }//WellcomeDialog
 
     private void deleteAllSQLite() {
         SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
