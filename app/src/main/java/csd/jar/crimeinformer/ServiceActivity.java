@@ -44,6 +44,7 @@ public class ServiceActivity extends AppCompatActivity {
         showNameTextView.setText(nameString + " " + surnameString);
 
 
+
     }// showName
 
     private void bindWidget() {
