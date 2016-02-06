@@ -12,6 +12,7 @@ import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 public class ServiceActivity extends AppCompatActivity {
@@ -23,6 +24,10 @@ public class ServiceActivity extends AppCompatActivity {
     private LocationManager objLocationManager;
     private Criteria objCriteria;
     private boolean GPSABoolean, networkABoolean;
+    private ExpandableListView objExpandableListView;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,18 @@ public class ServiceActivity extends AppCompatActivity {
         //Setup Location
         setupLocation();
 
+        //Create ExpanableListView
+        createExpanListView();
+
     } // Main Method
+
+    private void createExpanListView() {
+
+        MyExpanableListView adapterExpanableListView = new MyExpanableListView(ServiceActivity.this);
+        objExpandableListView.setAdapter(adapterExpanableListView);
+
+
+    }// CreateExpanListView
 
     @Override
     protected void onResume() {
@@ -186,6 +202,8 @@ public class ServiceActivity extends AppCompatActivity {
         showNameTextView = (TextView) findViewById(R.id.textView7);
         showLatTextView = (TextView) findViewById(R.id.textView10);
         showLngTextView = (TextView) findViewById(R.id.textView12);
+        objExpandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+
 
     }// bindWidget
 
