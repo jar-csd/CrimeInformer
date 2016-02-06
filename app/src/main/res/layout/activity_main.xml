@@ -5,7 +5,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:background="@drawable/wall23">
+    android:background="@drawable/bg1">
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,7 +19,8 @@
             android:id="@+id/textView"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="#2f39f4" />
 
         <Button
             android:layout_width="@dimen/logo"
@@ -29,7 +30,9 @@
             android:id="@+id/button"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/h1"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/blue"
+            android:textColor="#2f39f4" />
 
         <Button
             android:layout_width="@dimen/logo"
@@ -37,8 +40,11 @@
             android:onClick="clickRegister"
             android:text="@string/register"
             android:id="@+id/button2"
-            android:layout_gravity="center_horizontal"
             android:textSize="@dimen/h1"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/blue"
+            android:textColor="#2f39f4"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp" />
     </LinearLayout>
 </RelativeLayout>

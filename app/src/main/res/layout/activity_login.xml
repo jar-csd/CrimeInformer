@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="csd.jar.crimeinformer.LoginActivity"
-    android:background="@drawable/wall23">
+    android:background="@drawable/bg1">
 
     <LinearLayout
         android:orientation="vertical"
@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:padding="20dp"
-        android:background="#82ffffff">
+        android:background="#82fafcfd">
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,7 +26,8 @@
             android:id="@+id/textView5"
             android:textSize="@dimen/h1"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="#2f39f4" />
 
         <EditText
             android:layout_width="250dp"
@@ -44,10 +45,13 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="clickLogin"
         android:text="@string/login"
         android:id="@+id/button5"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:textColor="#2f39f4"
+        android:background="@drawable/blue"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

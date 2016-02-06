@@ -8,13 +8,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="csd.jar.crimeinformer.RegisterActivity"
-    android:background="@drawable/wall23">
+    android:background="@drawable/bg1">
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:layout_width="wrap_content"
@@ -22,7 +23,9 @@
             android:text="OK"
             android:onClick="clickOK"
             android:id="@+id/button3"
-            android:layout_weight="1" />
+            android:background="@drawable/blue"
+            android:textColor="#2f39f4"
+            android:textSize="20dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -30,7 +33,10 @@
             android:text="Cancel"
             android:onClick="clickCancel"
             android:id="@+id/button4"
-            android:layout_weight="1" />
+            android:textColor="#2f39f4"
+            android:background="@drawable/blue"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -39,7 +45,7 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:layout_marginTop="50dp"
-        android:background="#82ffffff">
+        android:background="#82fafcfc">
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,7 +54,8 @@
             android:id="@+id/textView2"
             android:textSize="@dimen/h1"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="#2f39f4" />
 
         <LinearLayout
             android:orientation="horizontal"
