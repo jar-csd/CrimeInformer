@@ -154,5 +154,6 @@
         android:textColor="#f42f46"
         android:background="@drawable/blue"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:onClick="clickSentData" />
 </RelativeLayout>
