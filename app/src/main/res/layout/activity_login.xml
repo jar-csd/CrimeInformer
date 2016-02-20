@@ -53,5 +53,6 @@
         android:layout_alignParentBottom="true"
         android:textColor="#2f39f4"
         android:background="@drawable/blue"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp" />
 </RelativeLayout>

@@ -54,7 +54,7 @@ public class ServiceActivity extends AppCompatActivity {
     private void createExpanListView() {
 
         MyData objMyData = new MyData();
-        String[] parentStrings = objMyData.mainHeadStrings;
+        final String[] parentStrings = objMyData.mainHeadStrings;
         final String[][] childStrings = objMyData.subHeadStrings;
 
 
@@ -65,7 +65,8 @@ public class ServiceActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
 
-                confirmGroupCrime(childStrings[i][i1]);
+                confirmGroupCrime(parentStrings[i], childStrings[i][i1]);
+
 
                 return false;
             }
@@ -74,11 +75,11 @@ public class ServiceActivity extends AppCompatActivity {
 
     }// CreateExpanListView
 
-    private void confirmGroupCrime(final String strGroupCrime) {
+    private void confirmGroupCrime(String parentString, final String strGroupCrime) {
 
         AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
         objBuilder.setIcon(R.drawable.icon_question);
-        objBuilder.setTitle(getResources().getString(R.string.crime));
+        objBuilder.setTitle(getResources().getString(R.string.crime) + " "+parentString);
         objBuilder.setMessage("คุณเลือก ==> " + strGroupCrime);
         objBuilder.setCancelable(false);
         objBuilder.setPositiveButton("ใช่", new DialogInterface.OnClickListener() {

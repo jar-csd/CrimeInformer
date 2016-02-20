@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="csd.jar.crimeinformer.ServiceActivity"
-    android:background="@drawable/wall23">
+    android:background="@drawable/bg1">
 
     <LinearLayout
         android:orientation="vertical"
@@ -27,7 +27,8 @@
                 android:text="@string/well1"
                 android:id="@+id/textView6"
                 android:textSize="@dimen/h1"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="#2f39f4" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,7 +58,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/location"
                     android:id="@+id/textView8"
-                    android:textSize="@dimen/h1" />
+                    android:textSize="@dimen/h1"
+                    android:textColor="#2f39f4" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -114,13 +116,15 @@
                         android:layout_height="wrap_content"
                         android:text="@string/crime"
                         android:id="@+id/textView13"
-                        android:textSize="@dimen/h1" />
+                        android:textSize="@dimen/h1"
+                        android:textColor="#2f39f4" />
 
                     <ExpandableListView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/expandableListView"
-                        android:layout_margin="20dp" />
+                        android:layout_margin="10dp"
+                        android:textFilterEnabled="false" />
                 </LinearLayout>
 
                 <TextView
@@ -128,7 +132,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/detail"
                     android:id="@+id/textView14"
-                    android:textSize="@dimen/h1" />
+                    android:textSize="@dimen/h1"
+                    android:textColor="#2f39f4" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -141,9 +146,13 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SENT DATA"
         android:id="@+id/button6"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:textColor="#f42f46"
+        android:background="@drawable/blue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
 </RelativeLayout>

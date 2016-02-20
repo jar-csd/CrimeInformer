@@ -32,7 +32,8 @@
             android:textSize="@dimen/h1"
             android:textStyle="bold"
             android:background="@drawable/blue"
-            android:textColor="#2f39f4" />
+            android:textColor="#2f39f4"
+            android:layout_marginTop="20dp" />
 
         <Button
             android:layout_width="@dimen/logo"
@@ -45,6 +46,6 @@
             android:background="@drawable/blue"
             android:textColor="#2f39f4"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="50dp" />
     </LinearLayout>
 </RelativeLayout>
