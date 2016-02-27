@@ -54,5 +54,5 @@
         android:textColor="#2f39f4"
         android:background="@drawable/blue"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginBottom="200dp" />
 </RelativeLayout>
