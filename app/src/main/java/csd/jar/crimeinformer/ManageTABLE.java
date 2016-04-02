@@ -24,6 +24,14 @@ public class ManageTABLE {
     public static final String COLUMN_PHONENUMBER = "PhoneNumber";
     public static final String COLUMN_EMAIL = "Email";
 
+    public static final String crime_table = "crimeTABLE";
+    public static final String column_Informer = "Informer";
+    public static final String column_Date = "Date";
+    public static final String column_Lat = "Lat";
+    public static final String column_Lng = "Lng";
+    public static final String column_Category = "Category";
+    public static final String column_Crime = "Crime";
+    public static final String column_Detail = "Detail";
 
 
     public ManageTABLE(Context context) {
@@ -34,22 +42,43 @@ public class ManageTABLE {
 
     }//Constructor
 
+    public long addCrime(String strInformer,
+                         String strDate,
+                         String strLat,
+                         String strLng,
+                         String strCategory,
+                         String strCrime,
+                         String strDetail) {
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(column_Informer, strInformer);
+        contentValues.put(column_Date, strDate);
+        contentValues.put(column_Lat, strLat);
+        contentValues.put(column_Lng, strLng);
+        contentValues.put(column_Category, strCategory);
+        contentValues.put(column_Crime, strCrime);
+        contentValues.put(column_Detail, strDetail);
+
+        return writeSqLiteDatabase.insert(crime_table, null, contentValues);
+    }
+
+
     public String[] searchUser(String strUer) {
         try {
 
             String[] strResult = null;
             Cursor objCursor = readSqLiteDatabase.query(TABLE_NAME,
                     new String[]{COLUMN_ID, COLUMN_USER, COLUMN_PASSWORD, COLUMN_NAME,
-                    COLUMN_SURNAME, COLUMN_ID_CARD, COLUMN_PHONENUMBER, COLUMN_EMAIL},
+                            COLUMN_SURNAME, COLUMN_ID_CARD, COLUMN_PHONENUMBER, COLUMN_EMAIL},
                     COLUMN_USER + "=?",
                     new String[]{String.valueOf(strUer)},
                     null, null, null, null);
 
-            if (objCursor !=null) {
+            if (objCursor != null) {
                 if (objCursor.moveToFirst()) {
 
                     strResult = new String[objCursor.getColumnCount()];
-                    for (int i=0;i<objCursor.getColumnCount();i++) {
+                    for (int i = 0; i < objCursor.getColumnCount(); i++) {
                         strResult[i] = objCursor.getString(i);
 
                     } //for

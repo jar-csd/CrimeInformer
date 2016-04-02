@@ -163,7 +163,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
             android:onClick="clickSentData"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp" />
 
         <Button
             android:layout_width="0dp"
@@ -171,6 +173,11 @@
             android:text="History"
             android:id="@+id/button7"
             android:layout_weight="1"
-            android:onClick="clickHistory" />
+            android:onClick="clickHistory"
+            android:background="@drawable/blue"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#2f39f4" />
     </LinearLayout>
 </RelativeLayout>
