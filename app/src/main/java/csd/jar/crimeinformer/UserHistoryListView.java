@@ -42,7 +42,7 @@ public class UserHistoryListView extends AppCompatActivity implements View.OnCli
         synJSONtoSQLite();
 
         //Create ListView
-        //createListView();
+        createListView();
 
         //Button Controller
         buttonController();
@@ -109,6 +109,8 @@ public class UserHistoryListView extends AppCompatActivity implements View.OnCli
 
         //Receive Name from Intent
         String strName = getIntent().getStringExtra("Name");   // Name of User Login
+
+        showUserTextView.setText("ข้อมูลการแจ้งเหตุของ " + strName);
 
         SQLiteDatabase sqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
                 MODE_PRIVATE, null);
