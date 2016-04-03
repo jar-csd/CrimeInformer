@@ -11,6 +11,7 @@
     <string name="crime">กลุ่มอาชญากรรม :</string>
     <string name="detail">กรอกรายละเอียดเพิ่มเติม :</string>
     <string name="location">คุณอยู่ที่นี่ :</string>
+    <string name="read_all">ข้อมูล ผู้แจ้ง ทั้งหมด</string>
 
 
 </resources>
