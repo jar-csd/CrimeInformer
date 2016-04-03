@@ -1,5 +1,6 @@
 package csd.jar.crimeinformer;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
@@ -38,6 +39,9 @@ public class UserHistoryListView extends AppCompatActivity implements View.OnCli
         //Bind Widget
         bindWidget();
 
+        //Delete SQLite
+        deleteSQLite();
+
         //Synchronize Json to sqlite
         synJSONtoSQLite();
 
@@ -48,6 +52,38 @@ public class UserHistoryListView extends AppCompatActivity implements View.OnCli
         buttonController();
 
     } //Main Method
+
+    private void clickReadAllAdmin() {
+
+        int intStatus = Integer.parseInt(getIntent().getStringExtra("Status"));
+
+        if (intStatus == 1) {
+            //Admin
+            startActivity(new Intent(UserHistoryListView.this, ReadAllAdmin.class));
+
+        } else {
+            //User
+            MyAlertDialog myAlertDialog = new MyAlertDialog();
+            myAlertDialog.nagativeDialog(this, "ขอสงวนสิทธิ์",
+                    "ขอสงวนสิทธิ์ สำหรับ Amin เท่านั้นครับ");
+        }
+    }// clickReadAll
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        deleteSQLite();
+        synJSONtoSQLite();
+    }
+
+    private void deleteSQLite() {
+
+        SQLiteDatabase sqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
+                MODE_PRIVATE, null);
+        sqLiteDatabase.delete(ManageTABLE.crime_table, null, null);
+    }
 
     private void synJSONtoSQLite() {
 
@@ -115,6 +151,28 @@ public class UserHistoryListView extends AppCompatActivity implements View.OnCli
         SQLiteDatabase sqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
                 MODE_PRIVATE, null);
 
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM crimeTABLE WHERE Informer = " + "'" + strName + "'", null);
+        cursor.moveToFirst();
+        int intCount = cursor.getCount();
+        String[] crimeStrings = new String[intCount];
+        String[] categoryStrings = new String[intCount];
+        String[] dateStrings = new String[intCount];
+
+        for (int i=0;i<intCount; i++) {
+
+            crimeStrings[i] = cursor.getString(6);
+            categoryStrings[i] = cursor.getString(5);
+            dateStrings[i] = cursor.getString(2);
+
+
+            cursor.moveToNext();
+        } //for
+        cursor.close();
+
+        UserAdapter userAdapter = new UserAdapter(this, crimeStrings, categoryStrings, dateStrings);
+
+        crimeListView.setAdapter(userAdapter);
+
 
 
 
@@ -145,6 +203,7 @@ public class UserHistoryListView extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.button9:
+                clickReadAllAdmin();
                 break;
         } //switch
 
